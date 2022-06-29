@@ -1,0 +1,325 @@
+@use "sass:math";
+:root {
+  --primary-color: #EF5C5C;
+  --light-blue: #3380C7;
+  // 72% connection menu
+  --transition-color : #c4c4c4;
+  --dark-blue: #30475E;
+  --info-menu: #D63232;
+  --police: #fff;
+  --text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  --ok : rgb(19, 193, 13);
+
+}
+a{
+  text-decoration: none;
+
+}
+%btnScale {
+  transform: scale(1.05);
+  transition: transform 1s;
+}
+ textarea{
+   resize: none;
+ }
+.inputError{
+  border: 2px solid rgb(172, 29, 29)  !important;
+}
+.icons {
+  color: rgba(97, 94, 94, 0.87);
+}
+.active{
+  opacity: 1;
+  visibility: visible;
+  z-index: 300;
+  transition: 600ms;
+}
+
+.disActive {
+  opacity: 0;
+  visibility: hidden;
+  z-index: -1;
+  transition: 450ms;
+
+}
+
+.scalling{
+  transform: scale(1) translateY(20px);
+  transition: all 400ms;
+  position: absolute;
+  max-height: 50%;
+}
+.back-scal{
+
+  transition: all 400ms;
+  z-index: 2000;
+  overflow-y: none;
+  overflow-x: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+
+.title{
+  font-family: 'Noto Sans Display', sans-serif;
+}
+.title-2{
+  font-family: 'Noto Music', sans-serif;
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 10px;
+}
+
+.title-3{
+  font-family: 'Inter', sans-serif;
+}
+
+.title-4{
+  font-family: 'Jacques Francois', serif;
+}
+.btn{
+  background: #30475E;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+        inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  color: var(--police);
+  width: 190px;
+  height: 45px;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  &:hover{
+    @extend %btnScale;
+  }
+}
+
+.error{
+  font-family: 'Noto Music';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  text-transform: lowercase;
+  color: red;
+  padding-top: 3px;
+}
+.ok{
+  font-family: 'Noto Music';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  text-transform: lowercase;
+  color: var(--ok);
+  padding-top: 3px;
+}
+
+.adminmode{
+  font-family: 'Inter', sans-serif;
+  margin-top: 25px;
+  font-weight: 500;
+  font-style: oblique;
+  text-decoration: underline;
+  text-transform: lowercase;
+  color: #c01111;
+  padding: 5px;
+}
+
+.btn-2{
+  border-radius: 30px;
+  color: var(--police);
+  width: 190px;
+  height: 45px;
+  border: none;
+  font-size: 17px;
+  cursor: pointer;
+  margin-top: 5px;
+  /* identical to box height */
+  background: #F05454;
+  border-radius: 90px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  &:hover{
+    @extend %btnScale;
+  }
+
+}
+
+.btn-3{
+  border-radius: 30px;
+  color: var(--police);
+  width: 113px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  margin: 5px;
+
+  background: #F05454;
+  border-radius: 10px;
+  text-align: center;
+  color: #FFFFFF;
+  &:hover{
+    @extend %btnScale;
+  }
+
+}
+@mixin flex($direction,$wrap,$alignI,$justifyC)  {
+    display: flex;
+    flex-flow: $direction $wrap;
+    align-items: $alignI;
+    justify-content: $justifyC;
+}
+
+.close{
+  z-index: 2;
+  font-size: 10px;
+  line-height: 11px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-family: 'Noto Music', sans-serif;
+  padding: 3px;
+  color: red;
+  background: #FFFFFF;
+  border: 0.2px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50%;
+  --size-close : 15.5px;
+  height: var(--size-close);
+  width: var(--size-close);
+  cursor: pointer;
+  &:hover {
+    transition: 900ms;
+    background-color: var(--primary-color);
+    color: white;
+       
+  }
+}
+
+
+$white: #FFF;
+$gray: #888;
+$red: indianred;
+$blue: var(--light-blue);
+.like-button {
+  @include flex (row,nowrap,center,space-between);
+  color: $gray;
+  font-size: 1.5em;
+  font-family: 'Heebo', sans-serif;
+  background-color: transparent;
+  border: 0.1em solid;
+  border-radius: 1em;
+  padding: 0.333em 1em 0.25em;
+  line-height: 1.2em;
+  box-shadow: 0 0.25em 1em -0.25em;
+  cursor: pointer;
+  transition: color 150ms ease-in-out, background-color 150ms ease-in-out, transform 150ms ease-in-out;
+  outline: 0;
+  margin: 5px 0;
+  
+  &:hover {
+    color: $red;
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+  
+  &.selected {
+    color: $white;
+    background-color: $red;
+    border-color: $red;
+  }
+  
+  .heart-icon {
+    display: inline-block;
+    fill: currentColor;
+    width: 40px;
+    height: 0.8em;
+    margin-right: 0.2em;
+  }
+}
+
+
+.com-button {
+  @include flex (row,nowrap,center,space-between);
+  color: $gray;
+  font-size: 1.5em;
+  font-family: 'Heebo', sans-serif;
+  background-color: transparent;
+  border: 0.1em solid;
+  border-radius: 1em;
+  padding: 0.333em 1em 0.25em;
+  line-height: 1.2em;
+  box-shadow: 0 0.25em 1em -0.25em;
+  cursor: pointer;
+  transition: color 150ms ease-in-out, background-color 150ms ease-in-out, transform 150ms ease-in-out;
+  outline: 0;
+  margin: 5px 0;
+  
+  &:hover {
+    color: $blue;
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+  
+  &.selected {
+    color: $white;
+    background-color: $blue;
+    border-color: $blue;
+  }
+  
+  .heart-icon {
+    display: inline-block;
+    fill: currentColor;
+    width: 40px;
+    height: 0.8em;
+    margin-right: 0.2em;
+  }
+}
+
+
+.background-text{ 
+  text-align: center;
+  background-color: var(--dark-blue);
+  font-style: normal;
+  width: 140px;
+  padding: 10px;
+  border-radius: 20px;
+  height: auto;
+  font-size: 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  /* or 19px */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-feature-settings: 'ordn' on, 'sinf' on;
+  color: var(--police);
+
+}
+
+
+@keyframes appar {
+  100%{
+      opacity: 1;
+  }
+}
+
+@keyframes cercle {
+  100%{
+      transform: rotate(360deg);
+  }  
+}
+
